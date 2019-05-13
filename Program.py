@@ -1,5 +1,11 @@
 from Hero import *
 import sys
+from CreatureClass import *
+
+
+Warrior = CreatureClass("Warrior",12,4,0,0)
+Mage = CreatureClass("Mage",8,2,3,3)
+Rogue = CreatureClass("Rogue",10,5,1,1)
 
 def pClassSelect():
     choice = input("choose your class\n[W]arrior\n[M]age\n[R]ogue\n\n")
@@ -12,30 +18,21 @@ def pClassSelect():
         confirm = input("Are you sure you want to be a Warrior?\n[Y]es   [N]o\n\n")
         confirm = confirm.lower()
         if confirm == "y":
-            pClass = "Warrior"
-            baseDamage = 2
-            baseHealth = 10
-            baseEnergy = 0
+            pClass = Warrior
         else:
             pClassSelect()
     elif choice == "m":
         confirm = input("Are you sure you want to be a Mage?\n[Y]es   [N]o\n\n")
         confirm = confirm.lower()
         if confirm == "y":
-            pClass = "Mage"
-            baseDamage = 1
-            baseHealth = 6
-            baseEnergy = 3
+            pClass = Mage
         else:
             pClassSelect()
     elif choice == "r":
         confirm = input("Are you sure you want to be a Rogue?\n[Y]es   [N]o\n\n")
         confirm = confirm.lower()
         if confirm == "y":
-            pClass = "Rogue"
-            baseDamage = 3
-            baseHealth = 8
-            baseEnergy = 1
+            pClass = Rogue
         else:
             pClassSelect()
     else:
@@ -51,14 +48,13 @@ def LevelCheck():
         print("Come back when you are more experienced")
     else:
         print("Congrats! You have gained a level!")
-        if __name__ == '__main__':
-            p.maxEnergy += p.startEnergy
-            p.maxHealth += p.startHealth
-            p.health = p.maxHealth
-            p.energy = p.maxEnergy
-            p.xp -= p.xpRequired
-            p.pLevel += 1
-            p.damage += p.startDamage
+        p.maxEnergy += p.startEnergy
+        p.maxHealth += p.startHealth
+        p.health = p.maxHealth
+        p.energy = p.maxEnergy
+        p.xp -= p.xpRequired
+        p.pLevel += 1
+        p.damage += p.startDamage
 
 def Heal():
     if p.health == p.maxHealth:
@@ -99,13 +95,13 @@ def GameTown():
     print                                                   ("[Q]uit")
     choice = input("\n\nWhat would you like to do?\n\n")
     choice = choice.lower()
-    if choice == "w":
-        GameWeaponShop()
-    elif choice == "a":
-        GameArmorShop()
-    elif choice == "d":
-        GameDungeon()
-    elif choice == "h":
+    #if choice == "w":
+        #GameWeaponShop()
+    #elif choice == "a":
+        #GameArmorShop()
+    #elif choice == "d":
+        #GameDungeon()
+    if choice == "h":
         Heal()
     elif choice == "c":
         Character()
@@ -114,8 +110,14 @@ def GameTown():
     elif choice == "q":
         Quit()
 
-def GameWeaponShop():
-    
+#def GameWeaponShop():
+
+def Character():
+    print("Name: ",p.name)
+    print("Health: ", p.health,"/",p.maxHealth)
+    print("")
+    print("")
+    print("")
 
 GameStart()
 
